@@ -1,20 +1,23 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import {Text, View} from 'react-native';
+import Dashboard from './Components/Dashboard';
+import React, {useState} from 'react';
+import Invoice from './Components/Invoice';
 
-export default function App() {
+export default function App() { 
+  const [nav, setNav] = useState(false)
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+    <View>
       <StatusBar style="auto" />
+    
+      {
+        nav? (
+          <Invoice setNav={setNav}/>
+        ):( 
+          <Dashboard setNav={setNav}/>
+          
+          )
+      }
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
